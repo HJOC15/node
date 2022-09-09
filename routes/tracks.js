@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router(); 
 
-//TODO https://localhost/tracks GET, POST, DELETE, PUT
+//TODO https://localhost/api/tracks GET, POST, DELETE, PUT
 
 router.get("/", (req, res) =>
 {

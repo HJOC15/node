@@ -1,24 +1,25 @@
 require("dotenv").config()
-const express = require("express") 
-const cors  = require("cors")
+const express = require("express")
+const cors = require("cors")
 const dbConnect = require('./config/mongo')
 const app = express()
 
 app.use(cors())
+app.use(express.json())
+app.use(express.static("storage"))
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
-/*
+/**
+ * Aqui invocamos a las rutas
+ */
 
-Aquí invocamos las rutas
-
-*/
-// TODO localhost/api/_____
-
-app.use("/api", require("./routes"))
+//TODO localhost/api/_____________
+app.use("/api",require("./routes"))
 
 app.listen(port, () => {
-    console.log(`Tu app está lista por http://localhost:${port}`)
+    console.log('Tu app esta lista  por http:localhost:' + port)
 })
+
 
 dbConnect()
