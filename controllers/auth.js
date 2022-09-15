@@ -26,8 +26,7 @@ res.send({data})
 const loginCtrl = async (req,res) =>{
     try {
         req = matchedData(req);
-        const user = await userModel.findOne({email:req.email})
-        .select('email password rol name');
+        const user = await userModel.findOne({email:req.email});
         if(!user){
             handleHttpError(res,"no existe el usuario",404)
             return

@@ -20,7 +20,8 @@ router.get("/:id",authMiddleware,validatorGetItem,getItem);
  router.put("/:id",authMiddleware,validatorGetItem,validatorCreateItem,updateItem);
 
 //crear items
-router.post("/",authMiddleware,checkRol(["admin"]),validatorCreateItem,createItem);
+
+router.post("/",authMiddleware,checkRol(["admin" , "user"]),validatorCreateItem,createItem);
 
 //eliminar item
 router.delete("/:id",authMiddleware,validatorGetItem,deleteItem);
