@@ -9,7 +9,8 @@ const {matchedData} = require("express-validator");
 const getItems =  async (req,res) => {
     try {
         const user  = req.user;
-        const data = await tracksModel.find({});
+        
+        const data = await tracksModel.findAllData({});
         res.send({data,user})
     } catch (e) {
         handleHttpError(res,'ERROR_EN_GETITEMS')
@@ -28,7 +29,7 @@ const getItem = async (req,res) => {
     try {
         req = matchedData(req);
         const {id} = req;
-        const data = await tracksModel.findById(id);
+        const data = await tracksModel.findOneData(id);
         res.send({data})
     } catch (e) {
         handleHttpError(res,"Error_Get_Item")
