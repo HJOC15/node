@@ -1,5 +1,6 @@
 const {check} = require("express-validator");
 const validateResults = require("../utils/handleValidator")
+
 const validatorCreateItem = [
     check("name")
     .exists()
@@ -19,7 +20,6 @@ const validatorCreateItem = [
     check("artist.nickname")
     .exists()
     .notEmpty(),
-    check("artis.nationality"),
     check("artist.nationality")
     .exists()
     .notEmpty(),
@@ -39,11 +39,11 @@ const validatorCreateItem = [
     (req,res,next) => {
         return validateResults(req,res,next)
     }
+
 ];
 
 
 
-module.exports = {validatorCreateItem};
 const validatorGetItem = [
     check("id")
     .exists()

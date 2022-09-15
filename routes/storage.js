@@ -7,7 +7,6 @@ const router = express.Router();
 
 //TODO http://localhost/api/storage GET,POST,DELETE,PUT
 
-
 //insertar item
 router.post("/",uploadMiddleware.single("myfile"),createItem);
 

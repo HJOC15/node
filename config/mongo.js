@@ -1,19 +1,24 @@
-const mongoose= require("mongoose")
+const mongoose = require("mongoose");
 
-const dbConnect = () =>{
-    const DB_URI = process.env.DB_URI
-    mongoose.connect(DB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+const dbConnect = () => {
+
+    const DB_URI = process.env.DB_URI;
+    mongoose.connect(
+        DB_URI,
+         {
+        //userNewUrlParser:true,
+        useUnifiedTopology:true,
     },
-    (err, res) =>{
+    (err,res) => {
+        
         if(!err){
-            console.log('*** Conexión correcta ****')
+            console.log('*** CONEXION CORRECTA ***')
+        }else{
+             console.log(err)
         }
-        else{
-            console.log('*** Error de Conexion ****')
-        }
-    })
-}
+    }
+    );
+
+};
 
 module.exports = dbConnect
