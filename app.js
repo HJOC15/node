@@ -1,8 +1,11 @@
 require("dotenv").config()
 const express = require("express")
 const cors = require("cors")
-const dbConnect = require('./config/mongo')
+
+const dbConnectNoSQL = require('./config/mongo')
+const {dbConnectMySQL} = require("./config/mysql")
 const app = express()
+const ENGINE_DB = process.env.ENGINE_DB;
 
 app.use(cors())
 app.use(express.json())
@@ -19,7 +22,7 @@ app.use("/api",require("./routes"))
 
 app.listen(port, () => {
     console.log('Tu app esta lista  por http:localhost:' + port)
-})
+});
 
 
-dbConnect()
+(ENGINE_DB === 'nosql') ? dbConnectNoSQL() : dbConnectMySQL();
