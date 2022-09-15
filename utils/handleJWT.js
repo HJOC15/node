@@ -9,7 +9,6 @@ const propiertiesKey = getPropierties()
  */
 const tokenSign = async (user) =>{
     const sign =  jwt.sign({
-        
         [propiertiesKey.id]: user[propiertiesKey.id],
         role: user.role
     },

@@ -1,6 +1,6 @@
 const bcryptjs = require("bcryptjs");
 /**
- * contrase;a sin encriptar
+ * contraseña sin encriptar
  * @param {*} passwordPlain 
  */
 const encrypt = async (passwordPlain) =>{
@@ -8,7 +8,7 @@ const encrypt = async (passwordPlain) =>{
     return hash;
 };
 /**
- * pasar contrase;a sin encriptar y contras;ea encriptada
+ * pasar contrase;a sin encriptar y contraseña encriptada
  * @param {*} passwordPlain 
  * @param {*} hashPassword 
  */

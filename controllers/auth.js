@@ -5,8 +5,8 @@ const {encrypt,compare} = require("../utils/handlePassword");
 const { handleHttpError } = require("../utils/handleError");
 
 const registerCtrl = async (req,res) => {
-    try {
-        req = matchedData(req);
+try {
+    req = matchedData(req);
 const passwordHash = await encrypt(req.password)
 const body = {...req,password:passwordHash}
 const dataUser = await userModel.create(body)
@@ -48,9 +48,11 @@ const loginCtrl = async (req,res) =>{
         }
 
         res.send({data})
-
+        
     } catch (e) {
         handleHttpError(res,"Error_login")
     }
 }
+
+
 module.exports = {loginCtrl,registerCtrl}

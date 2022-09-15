@@ -52,14 +52,13 @@ const getItem = async (req,res) => {
 
 const createItem = async (req,res) => {
     
-
     try {
         const {body,file} = req
         console.log(file);
         const fileData = {
             filename: file.filename,
             url: `${PUBLIC_URL}/${file.filename}`
-
+    
         }
         const data = await storageModel.create(fileData)
         res.send({data})
@@ -67,8 +66,9 @@ const createItem = async (req,res) => {
         handleHttpError(res,"ERRRO_Crear_ITEM")
     }
 
-};
+   
 
+};
 
 /**
  * Eliminar un registro
@@ -76,7 +76,7 @@ const createItem = async (req,res) => {
  * @param {*} res 
  */
 
- const deleteItem = async (req,res) => {
+const deleteItem = async (req,res) => {
 
     try {
         const  {id} = matchedData(req);

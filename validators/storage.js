@@ -4,7 +4,7 @@ const validateResults = require("../utils/handleValidator")
 
 const validatorGetItem = [
     check("id")
-    .exists() 
+    .exists()
     .notEmpty(),
     (req,res,next) => {
         return validateResults(req,res,next)

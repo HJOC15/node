@@ -15,7 +15,6 @@ const authMiddleware = async (req,res,next) =>{
         const token = req.headers.authorization.split(' ').pop();
         const dataToken = await verifyToken(token);
 
-
         if(!dataToken){
             handleHttpError(res,"NOT_PAYLOAD_DATA",401);
             return
@@ -29,7 +28,7 @@ const authMiddleware = async (req,res,next) =>{
         req.user = user
 
         next()
-
+        
     } catch (e) {
         handleHttpError(res,"NOT_SESSION",401);
     }

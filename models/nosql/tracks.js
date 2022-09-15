@@ -45,6 +45,7 @@ const TracksScheme = new mongoose.Schema(
         versionKey: false
     }
 ); 
+
 TracksScheme.statics.findAllData = function (){
     const joinData = this.aggregate([
         {
@@ -81,9 +82,10 @@ TracksScheme.statics.findOneData = function (id){
         {
             $unwind:"$audio"
         },
-
+        
     ])
     return joinData
 }
+
 TracksScheme.plugin(mongooseDelete,{overrideMethods: "all"});
 module.exports = mongoose.model("tracks",TracksScheme)

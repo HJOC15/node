@@ -38,6 +38,7 @@ const Tracks = sequelize.define(
         timestamps: true,
     },
 );
+
 Tracks.findAllData = function (){
     Tracks.belongsTo(Storage,{
         foreignKey:'mediaId',
@@ -55,4 +56,5 @@ Tracks.findOneData = function (id){
 
     return Tracks.findOne({where:{id} ,include:'audio'})
 }
+
 module.exports = Tracks;
