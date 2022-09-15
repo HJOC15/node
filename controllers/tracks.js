@@ -8,15 +8,16 @@ const {matchedData} = require("express-validator");
  */
 const getItems =  async (req,res) => {
     try {
+        const user  = req.user;
         const data = await tracksModel.find({});
-        res.send({data})
+        res.send({data,user})
     } catch (e) {
         handleHttpError(res,'ERROR_EN_GETITEMS')
     }
     
 };
 /**
- * Obtenet un detalle
+ * Obtener un detalle
  * @param {*} req 
  * @param {*} res 
  */
