@@ -4,23 +4,24 @@ const {userModel} = require("../models")
 const {encrypt,compare} = require("../utils/handlePassword");
 const { handleHttpError } = require("../utils/handleError");
 
-const registerCtrl = async (req,res) => {
-try {
-    req = matchedData(req);
-const passwordHash = await encrypt(req.password)
-const body = {...req,password:passwordHash}
-const dataUser = await userModel.create(body)
-
-const data ={
-    token: await tokenSign(dataUser),
-    user:dataUser
-}
-
-res.send({data})
-} catch (e) {
-    handleHttpError(res,"error de autenticacion")
-}
-}
+const registerCtrl = async (req, res) => {
+    try{
+      req = matchedData(req);
+      const password = await encrypt(req.password);
+      const body = { ...req, password };
+      const dataUser = await userModel.create(body);
+      dataUser.set("password", undefined, { strict: false });
+  
+      const data = {
+          token: await tokenSign(dataUser),
+          user: dataUser
+      };
+      res.status(201)
+      res.send({ data })
+    }catch(e){
+      handleHttpError(res, "ERROR_REGISTER_USER")
+    }
+  };
 
 const loginCtrl = async (req,res) =>{
     try {

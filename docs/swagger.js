@@ -76,10 +76,10 @@ const swaggerDefinition ={
                     type:"object",
                     properties:{
                         start:{
-                            type:"interger"
+                            type:"integer"
                         },
                         end:{
-                            type:"interger"
+                            type:"integer"
                         },
                     }
                 },

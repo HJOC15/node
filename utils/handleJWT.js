@@ -1,35 +1,31 @@
 const jwt = require("jsonwebtoken")
 const JWT_SECRET = process.env.JWT_SECRET;
-const getPropierties = require("../utils/handlePropertiesEngine")
-const propiertiesKey = getPropierties()
+const getProperties = require("../utils/handlePropertiesEngine")
+const propertiesKey = getProperties()
 
-/**
- * debes pasar el usuario
- * @param {*} user 
- */
-const tokenSign = async (user) =>{
-    const sign =  jwt.sign({
-        [propiertiesKey.id]: user[propiertiesKey.id],
-        role: user.role
-    },
-    JWT_SECRET,
-    {
-        expiresIn: "2h",
-    }
+/**Debes de pasar el objeto del usuario*/
+const tokenSign = async (user) => {
+    const sign = jwt.sign(
+        {
+            [propertiesKey.id]: user[propertiesKey.id],
+            role: user.role
+        },
+        JWT_SECRET,
+        {
+            expiresIn: "2h"
+        }
     );
-    return sign;
-}
+    return sign
+};
 /**
- * debes pasar el token de sesion
- * @param {*} tokenJWT 
- * @returns 
- */
-const verifyToken = async (tokenJWT) => {
+ * debes de pasar el token de sesion el JWT
+ * */
+const verifyToken = async (tokenJwt) => {
     try {
-        return jwt.verify(tokenJWT,JWT_SECRET)
+        return jwt.verify(tokenJwt, JWT_SECRET)
     } catch (e) {
         return null
     }
-}
+};
 
-module.exports  = {tokenSign,verifyToken}
+module.exports = { tokenSign, verifyToken }

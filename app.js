@@ -26,7 +26,9 @@ swaggerUI.setup(openApiConfiguration))
  */
 
 //TODO localhost/api/_____________
-app.use("/api",require("./routes"))
+app.use("/api", require("./routes/auth"))
+app.use("/api", require("./routes/storage"))
+app.use("/api", require("./routes/tracks"))
 
 app.listen(port, () => {
     console.log('Tu app esta lista  por http:localhost:' + port)

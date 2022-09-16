@@ -26,7 +26,7 @@ const router = express.Router();
  *                      description: "Error al obtener la data"
  */
 
-router.get("/",authMiddleware,getItems);
+router.get("/tracks",authMiddleware,getItems);
 
 /**
  * Get details from tracks
@@ -52,7 +52,7 @@ router.get("/",authMiddleware,getItems);
  *                  '403':
  *                      description: "Error al obtener el track"
  */
-router.get("/:id",authMiddleware,validatorGetItem,getItem);
+router.get("/tracks/:id",authMiddleware,validatorGetItem,getItem);
 
  /**
  * update track
@@ -83,7 +83,7 @@ router.get("/:id",authMiddleware,validatorGetItem,getItem);
  *                  '403':
  *                      description: "Error al actualizar el track"
  */
-router.put("/:id",authMiddleware,validatorGetItem,validatorCreateItem,updateItem);
+router.put("/tracks/:id",authMiddleware,validatorGetItem,validatorCreateItem,updateItem);
 
 /**
  * create new track
@@ -107,7 +107,7 @@ router.put("/:id",authMiddleware,validatorGetItem,validatorCreateItem,updateItem
  *                  '403':
  *                      description: "Error al registrar el track"
  */
-router.post("/",authMiddleware,checkRol(["admin" , "user"]),validatorCreateItem,createItem);
+router.post("/tracks",authMiddleware,checkRol(["admin" , "user"]),validatorCreateItem,createItem);
 
 /**
  * Delete details from tracks
@@ -133,6 +133,6 @@ router.post("/",authMiddleware,checkRol(["admin" , "user"]),validatorCreateItem,
  *                  '403':
  *                      description: "Error al eliminar el track"
  */
-router.delete("/:id",authMiddleware,validatorGetItem,deleteItem);
+router.delete("/tracks/:id",authMiddleware,validatorGetItem,deleteItem);
 
 module.exports = router ;

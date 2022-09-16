@@ -34,7 +34,7 @@ const router = express.Router();
  *                              type: string
  *                              format: binary
  */
-router.post("/",uploadMiddleware.single("myfile"),createItem);
+router.post("/storage",uploadMiddleware.single("myfile"),createItem);
 
 /**
  * Get all from storage
@@ -53,7 +53,7 @@ router.post("/",uploadMiddleware.single("myfile"),createItem);
  *                  '403':
  *                      description: "Error al obtener el storage"
  */
-router.get("/",getItems)
+router.get("/storage",getItems)
 
 /**
  * Get details from storage
@@ -79,7 +79,7 @@ router.get("/",getItems)
  *                  '403':
  *                      description: "Error al obtener el storage"
  */
-router.get("/:id",validatorGetItem,getItem)
+router.get("/storage/:id",validatorGetItem,getItem)
 
 /**
  * Delete details from storage
@@ -105,6 +105,6 @@ router.get("/:id",validatorGetItem,getItem)
  *                  '403':
  *                      description: "Error al eliminar el storage"
  */
-router.delete("/:id",validatorGetItem,deleteItem)
+router.delete("/storage/:id",validatorGetItem,deleteItem)
 
 module.exports = router; 
