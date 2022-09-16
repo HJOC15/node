@@ -1,9 +1,7 @@
 const swaggerJsdoc = require("swagger-jsdoc");
-
 /**
  * API Config Info
  */
-
 const swaggerDefinition ={
     openapi: "3.0.0",
     info:{
@@ -102,6 +100,12 @@ const swaggerDefinition ={
             },
         },
     },
+    securitySchemes:{
+        bearerAuth:{
+            type:"http",
+            scheme:"bearer",
+        }
+    },
    },
 };
 
@@ -115,7 +119,5 @@ const options = {
         "./routes/*.js"
     ]
 }
-
 const openApiConfiguration = swaggerJsdoc(options);
-
 module.exports = openApiConfiguration
