@@ -78,7 +78,7 @@ const updateItem =  async (req,res) => {
         )
         res.send({data})
     } catch (e) {
-        handleHttpError(res,'ERROR_EN_UPDATEITEMS')
+        handleHttpError(res,'ERROR_EN_UPDATE_ITEMS')
     }
 
 };

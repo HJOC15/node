@@ -10,14 +10,12 @@ try {
 const passwordHash = await encrypt(req.password)
 const body = {...req,password:passwordHash}
 const dataUser = await userModel.create(body)
-dataUser.set('password',undefined,{strict:false})
 
 const data ={
     token: await tokenSign(dataUser),
     user:dataUser
 }
 
-res.status(201)
 res.send({data})
 } catch (e) {
     handleHttpError(res,"error de autenticacion")

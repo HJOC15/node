@@ -26,6 +26,27 @@ const router = express.Router();
 
 router.post("/register",validatorRegister,registerCtrl)
 
+/**
+ * Route login  user
+ * @openapi
+ * /auth/login:
+ *      post:
+ *          tags:
+ *              - auth
+ *          summary: "Logear nuevo usuario"
+ *          description: "Esta ruta es para logear a un  usuario"
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: "#/components/schemas/authLogin"
+ *          responses:
+ *                  '201':
+ *                      description: "El usuario se logea correctamente"
+ *                  '403':
+ *                      description: "Error al logear el usuario"
+ */
+
 router.post("/login",validatorLogin,loginCtrl)
 
 

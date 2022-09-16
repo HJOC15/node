@@ -13,6 +13,8 @@ const encrypt = async (passwordPlain) =>{
  * @param {*} hashPassword 
  */
 const compare = async (passwordPlain,hashPassword) => {
+    console.log(passwordPlain)
+    console.log(hashPassword)
     return await bcryptjs.compare(passwordPlain,hashPassword)
 }
 

@@ -8,16 +8,103 @@ const router = express.Router();
 //TODO http://localhost/api/storage GET,POST,DELETE,PUT
 
 
-//insertar item
+/**
+ * upload file to  storage
+ * @openapi
+ * /storage:
+ *      post:
+ *          tags:
+ *              - storage
+ *          summary: "upload storage"
+ *          description: "subir archivo"
+ *          security:
+ *              - bearerAuth: []
+ *          responses:
+ *                  '200':
+ *                      description: "El archivo se subio a storage "
+ *                  '422':
+ *                      description: "Error al subir el archivo a storage"
+ *          requestBody:
+ *              content:
+ *                  multipart/form-data:
+ *                    schema:
+ *                      type: object
+ *                      properties:
+ *                          myfile:
+ *                              type: string
+ *                              format: binary
+ */
 router.post("/",uploadMiddleware.single("myfile"),createItem);
 
-//obtener lista de items
+/**
+ * Get all from storage
+ * @openapi
+ * /storage:
+ *      get:
+ *          tags:
+ *              - storage
+ *          summary: "Todos los archivos"
+ *          description: "Obtener todos los detalles de storage"
+ *          security:
+ *              - bearerAuth: []
+ *          responses:
+ *                  '201':
+ *                      description: "El storage se obtuvo"
+ *                  '403':
+ *                      description: "Error al obtener el storage"
+ */
 router.get("/",getItems)
 
-//obtener un solo item
+/**
+ * Get details from storage
+ * @openapi
+ * /storage/{id}:
+ *      get:
+ *          tags:
+ *              - storage
+ *          summary: "Detalle storage"
+ *          description: "Obtener el detalle de un storage"
+ *          security:
+ *              - bearerAuth: []
+ *          parameters:
+ *          - name: id
+ *            in: path
+ *            description: ID de storage a retornar
+ *            required: true
+ *            schema:
+ *              type: string
+ *          responses:
+ *                  '201':
+ *                      description: "El storage se obtuvo"
+ *                  '403':
+ *                      description: "Error al obtener el storage"
+ */
 router.get("/:id",validatorGetItem,getItem)
 
-//eliminar item
+/**
+ * Delete details from storage
+ * @openapi
+ * /storage/{id}:
+ *      delete:
+ *          tags:
+ *              - storage
+ *          summary: "Eliminar storage"
+ *          description: "elimina un storage"
+ *          security:
+ *              - bearerAuth: []
+ *          parameters:
+ *          - name: id
+ *            in: path
+ *            description: ID de storage a eliminar
+ *            required: true
+ *            schema:
+ *              type: string
+ *          responses:
+ *                  '201':
+ *                      description: "El storage se elimino"
+ *                  '403':
+ *                      description: "Error al eliminar el storage"
+ */
 router.delete("/:id",validatorGetItem,deleteItem)
 
 module.exports = router; 
