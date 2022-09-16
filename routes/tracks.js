@@ -2,7 +2,7 @@ const express = require("express");
 const { getItems, createItem, getItem, updateItem, deleteItem } = require("../controllers/tracks");
 const customHeader = require("../middleware/customHeader");
 const { checkRol } = require("../middleware/rol");
-const { authMiddleware } = require("../middleware/sesion");
+const { authMiddleware } = require("../middleware/sesions");
 const { validatorCreateItem, validatorGetItem } = require("../validators/tracks");
 const router = express.Router();
 
