@@ -47,6 +47,7 @@ const loginCtrl = async (req,res) =>{
             user
         }
 
+        res.status(200)
         res.send({data})
         
     } catch (e) {

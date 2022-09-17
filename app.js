@@ -32,10 +32,11 @@ app.use("/api", require("./routes/storage"))
 app.use("/api", require("./routes/tracks"))
 
 if(NODE_ENV !== 'test'){
+    app.listen(port, () => {
+        console.log('Tu app esta lista  por http:localhost:' + port)
+    });
+  }
 
-    app.listen(port);
-}
-
-(ENGINE_DB === 'nosql') ? dbConnectNoSQL() : dbConnectMySQL();
+  (ENGINE_DB === 'nosql') ? dbConnectNoSQL() : dbConnectMySQL();
 
 module.exports = app

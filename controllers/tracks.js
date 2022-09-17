@@ -56,6 +56,7 @@ const createItem = async (req,res) => {
         const data = await tracksModel.create(body)
         res.send({data})
     } catch (e) {
+        console.log(e)
         handleHttpError(res,'ERROR_EN_CREARITEMS')
     }
 
@@ -94,7 +95,11 @@ const deleteItem =  async (req,res) => {
     try {
         req = matchedData(req);
         const {id} = req;
-        const data = await tracksModel.delete({_id:id});
+        const trackData = await tracksModel.delete({_id:id});
+        const data = {
+            trackData,
+            deleted:1
+        }
         res.send({data})
     } catch (e) {
         handleHttpError(res,"Error_Eliminado_Item")

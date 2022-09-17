@@ -17,7 +17,7 @@ const TracksScheme = new mongoose.Schema(
                 message: "ERROR_URL",
             }
         },
-        artis:{
+        artist:{
             name:{
                 type:String,
             },
