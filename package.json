@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
-    "test": "cross-env NODE_ENV=test jest --silent --coverage --runInBand" ,
+    "test": "cross-env NODE_ENV=test jest --silent --coverage --runInBand",
     "test:watch": "cross-env NODE_ENV=test jest --coverage --watch --silent --runInBand"
   },
   "keywords": [],
@@ -42,7 +42,10 @@
       "/node_modules/"
     ],
     "globalTeardown": "./globals-kill.js",
-    "coverageReporters":["json", "html"]
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
   },
   "engines": {
     "node": "16.x"
