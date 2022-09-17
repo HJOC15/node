@@ -14,6 +14,7 @@ const getItems =  async (req,res) => {
     try {
         const user  = req.user;
         const data = await tracksModel.findAllData({});
+        console.log(data);
         res.send({data,user})
     } catch (e) {
         handleHttpError(res,'ERROR_EN_GETITEMS')
@@ -53,6 +54,7 @@ const createItem = async (req,res) => {
 
     try {
         const body = matchedData(req);
+        console.log(body);
         const data = await tracksModel.create(body)
         res.send({data})
     } catch (e) {

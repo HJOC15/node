@@ -50,7 +50,7 @@ TracksScheme.statics.findAllData = function (){
     const joinData = this.aggregate([
         {
             $lookup:{
-                from: "storage",
+                from: "storages",
                 localField: "mediaId",
                 foreignField: "_id",
                 as: "audio",
@@ -73,7 +73,7 @@ TracksScheme.statics.findOneData = function (id){
         },
         {
             $lookup:{
-                from: "storage",
+                from: "storages",
                 localField: "mediaId",
                 foreignField: "_id",
                 as: "audio",
