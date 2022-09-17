@@ -11,6 +11,10 @@ const swaggerDefinition ={
     servers:[
         {
             url:"http://localhost:3001/api"
+        },
+
+        {
+            url:"https://node-humberto-orellana.herokuapp.com/api"
         }
     ],
    components:{

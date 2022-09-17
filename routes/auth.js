@@ -6,7 +6,7 @@ const router = express.Router();
 /**
  * Route register new user
  * @openapi
- * /auth/register:
+ * /register:
  *      post:
  *          tags:
  *              - auth
@@ -29,7 +29,7 @@ router.post("/register",validatorRegister,registerCtrl)
 /**
  * Route login  user
  * @openapi
- * /auth/login:
+ * /login:
  *      post:
  *          tags:
  *              - auth
