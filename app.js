@@ -7,6 +7,7 @@ const dbConnectNoSQL = require('./config/mongo')
 const {dbConnectMySQL} = require("./config/mysql")
 const app = express()
 const ENGINE_DB = process.env.ENGINE_DB;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 app.use(cors())
 app.use(express.json())
@@ -30,8 +31,11 @@ app.use("/api", require("./routes/auth"))
 app.use("/api", require("./routes/storage"))
 app.use("/api", require("./routes/tracks"))
 
-app.listen(port, () => {
-    console.log('Tu app esta lista  por http:localhost:' + port)
-});
+if(NODE_ENV !== 'test'){
+
+    app.listen(port);
+}
 
 (ENGINE_DB === 'nosql') ? dbConnectNoSQL() : dbConnectMySQL();
+
+module.exports = app
