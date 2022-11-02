@@ -13,7 +13,7 @@ const getItems =  async (req,res) => {
 
     try {
         const user  = req.user;
-        const data = await tracksModel.findAllData({});
+        const data = await tracksModel.find({});
         console.log(data);
         res.send({data,user})
     } catch (e) {
